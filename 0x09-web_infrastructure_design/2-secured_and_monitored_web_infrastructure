@@ -1,0 +1,35 @@
+Image Link: https://imgur.com/a/vATt0e6
+
+Security Components Added:
+Firewalls (3 Total):
+Firewall 1: Protects load balancer from internet attacks
+Firewall 2 & 3: Protect each server from unauthorized access
+
+Purpose: Block malicious traffic, allow only legitimate requests
+Function: Filter incoming/outgoing network traffic based on security rules
+
+SSL Certificate:
+Purpose: Encrypt data between user and server
+
+Location: Installed on load balancer for SSL termination
+
+Why Each Component Was Added:
+Firewalls: Protect against cyber attacks, unauthorized access
+SSL Certificate: Secure data transmission, meet modern security standards
+Monitoring: Proactive issue detection, performance optimization
+Third Server: Better load distribution, more redundancy
+
+Issues Still Present:
+SSL Termination at Load Balancer:
+Problem: Traffic between load balancer and servers is unencryptedInternal network traffic can be intercepted
+
+Solution: Use end-to-end encryption
+
+Single MySQL Write Server:
+Problem: Only one server can handle database writes.If that server fails, no data updates possible
+
+Solution: Implement database clustering with multiple write nodes
+
+Identical Server Components:
+Problem: All servers have web server, app server, AND database
+
