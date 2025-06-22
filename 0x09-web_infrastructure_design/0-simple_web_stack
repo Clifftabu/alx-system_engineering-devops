@@ -1,0 +1,24 @@
+Image link: https://imgur.com/a/Tz6cOjH
+
+How it works step by step:
+User types "www.foobar.com" in browser
+The browser queries the DNS to resolve www.foobar.com to its IP address (8.8.8.8)
+The user's browser sends an HTTP request to IP 8.8.8.8
+Nginx (web server) receives the request
+Nginx forwards request to application server
+Application server processes request, queries MySQL for data
+Application server returns a response to Nginx, which then sends the final HTML to the user’s browser.
+
+Components of this architecture:
+Server – is a powerful computer designed to handle requests and deliver data to other computers (clients) over a network
+Domain name – A human-readable address for a website
+The www in www.foobar.com is a subdomain
+Web server – handles http requests and serves static files
+Application Server – Runs the website’s code
+Database – Stores website data
+
+Issues with this Infrastructure :
+SPOF (Single Point of Failure): Everything is hosted on one server. If it crashes, the entire website is down.
+Downtime During Maintenance: If you deploy new code or restart the web server, the site experiences downtime – users can’t access the website during this time
+Scalability Issues: One server has limited CPU, memory, and bandwidth.
+
