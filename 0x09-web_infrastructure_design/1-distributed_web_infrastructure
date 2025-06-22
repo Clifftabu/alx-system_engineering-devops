@@ -1,0 +1,40 @@
+Image link : https://imgur.com/a/46rbGcG
+
+Why We Added these Component:
+Load Balancer (HAProxy): Distributes incoming requests between multiple servers to handle more traffic and provide redundancy
+
+Server 2: Provides redundancy - if Server 1 fails, Server 2 can handle all requests
+
+Database Replica: Creates a backup of data and allows read operations to be distributed
+
+How it Works :
+1. User types "www.foobar.com"
+2. DNS resolves to Load Balancer IP (8.8.8.8)
+3. HAProxy receives request and decides which server to send it to
+4. Using Round Robin: alternates between Server 1 and Server 2
+5. Selected server processes request (Nginx → App Server → Database)
+6. Response travels back through the same path
+
+Database Primary-Replica (Master-Slave) Cluster:
+Primary (Master) Node:
+• Handles ALL write operations (INSERT, UPDATE, DELETE)
+• Can also handle read operations
+• The "source of truth" for data
+
+Replica (Slave) Node:
+• Handles ONLY read operations (SELECT)
+• Receives data copies from Primary automatically
+• Cannot write data directly
+
+
+How it works: When Primary gets new data, it automatically copies to Replica
+
+Issues with This Infrastructure:
+SPOF (Single Points of Failure):
+• Load Balancer: If HAProxy fails, entire site goes down
+
+Security Issues:
+• No Firewall: All servers exposed to internet attacks
+
+No Monitoring:
+• Can't detect failures: Won't know if servers go down
