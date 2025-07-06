@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Installs nginx, configures a Hello World page, and restarts nginx on Ubuntu 16.04
+
+# Update package lists
+apt-get update
+
+# Install nginx automatically
+apt-get install -y nginx
+
+# Create a Hello World page in nginx's root directory
+echo "Hello World!" > /var/www/html/index.html
+
+# Restart nginx using 'service', as 'systemctl' is not allowed
+service nginx restart
